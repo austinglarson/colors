@@ -1,0 +1,43 @@
+.color-names-list {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill,minmax(185px,1fr));
+    padding: 0 1rem;
+    font-size: 13px;
+
+    > div {
+        position: relative;
+        border-radius: 0.375rem;
+        background-color: #f5f5f7;
+
+        &:hover .color-square {
+            width: 50px;
+        }
+    }
+}
+.color-top {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: inherit;
+    background-color: transparent;
+}
+.color-square {
+    width: 42px;
+    height: 34px;
+    margin-right: 0.5rem;
+    transition: width 0.1s ease;
+}
+.color-details {
+    position: absolute;
+    top: 100%;
+    z-index: 100;
+    width: 100%;
+    background-color: inherit;
+    box-shadow: 0 3px 4px rgb(0 0 0 / 20%);
+}
