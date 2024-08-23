@@ -1,6 +1,7 @@
 import React from 'react'
 import ColorNamesList from './ColorNamesList';
 import colorData from './data/colors.json'
+import './ColorNames.scss'
 
 export interface Color {
     name: string,
@@ -17,7 +18,7 @@ export default function ColorNames() {
     }, [])
 
     return (
-        <div>
+        <div id="colorNames">
             <h1>HTML Color Names</h1>
 
             <ColorNamesList colors={colors} />

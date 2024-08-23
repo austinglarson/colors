@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #fafafc;
+}
+nav {
+    display: flex;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+
+    a {
+        color: inherit;
+        font-size: 0.875rem;
+        text-decoration: none;
+    }
+    a + a {
+        margin-left: 1.5rem;
+    }
+    a:hover {
+        color: #000;
+    }
+    .logo {
+        margin-right: auto;
+    }
+}

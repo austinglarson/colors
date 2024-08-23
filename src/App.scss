@@ -1,4 +1,40 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
+:root {
+    --max-width: 1024px;
+    --max-wide-width: 1548px;
+}
+
+input[type=text] {
+    padding: 0.75rem 0.875rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #86868b;
+    background-color: #fff;
+}
+
+button.btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #1678d7;
+}
+
+footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+
+    p {
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 1.25rem 0;
+        color: rgba(0, 0, 0, 0.65);
+        border-top: 1px solid rgb(0 0 0 / 16%);
+    }
+    a {
+        color: inherit;
+    };
 }

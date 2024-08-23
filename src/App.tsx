@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar'
 import ColorNames from './ColorNames'
 import Quiz from './Quiz'
+import Footer from './Footer'
 import './App.scss'
 
 function App() {
-
   return (
     <>
       <Router>
@@ -16,6 +16,8 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </Router>
+
+      <Footer />
     </>
   )
 }

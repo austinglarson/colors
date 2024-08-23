@@ -1,13 +1,15 @@
 import React from 'react';
 
-interface ModuleProps {
-    score: string;
-    setScore: Function;
+interface QuizProps {
+    questions: Array<object>;
+    setQuestions: Function;
+    currentQuestion: number;
+    setCurrentQuestion: Function;
     color: string;
     colorOptions: Array<string>;
 }
 
-export default function QuizMultipleChoiceNames({score, setScore, color, colorOptions}: ModuleProps) {
+export default function QuizMultipleChoiceNames({questions, setQuestions, currentQuestion, setCurrentQuestion, color, colorOptions}: QuizProps) {
 	const [formData, setFormData] = React.useState({color: ''});
 	const id = React.useId();
 
@@ -25,14 +27,21 @@ export default function QuizMultipleChoiceNames({score, setScore, color, colorOp
 
 		if (formData.color === color) {
 			console.log('Correct! :D');
-			setScore(score + 1);
+			setQuestions(prevQuestions =>
+                prevQuestions.map(question =>
+                    question.id === currentQuestion
+                        ? {...question, 'correct': true}
+                        : question
+                )
+            );
 		} else {
 			console.log('Inorrect! :(');
 		}
 	}
 
 	return (
-		<div>
+		<section>
+            <h2>Question {currentQuestion + 1}</h2>
 			<p>What color is this?</p>
 			<div className="color-swatch" style={{backgroundColor: color}}></div>
 
@@ -53,6 +62,6 @@ export default function QuizMultipleChoiceNames({score, setScore, color, colorOp
 				)}
 				<button onClick={submitAnswer}>Submit</button>
 			</form>
-		</div>
+		</section>
 	)
 }
