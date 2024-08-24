@@ -1,28 +1,37 @@
 import React from 'react';
+import QuizStart from './QuizStart';
 import QuizMultipleChoiceNames from './QuizMultipleChoiceNames';
 import './Quiz.scss'
 
-interface QuizMultipleChoiceNamesProps {
-    score: number;
-    setScore: React.Dispatch<React.SetStateAction<number>>;
-}
-
 export default function Quiz() {
-	const [currentModule, setCurrentModule] = React.useState(0);
+    const [questions, setQuestions] = React.useState(newQuiz());
+	const [currentQuestion, setCurrentQuestion] = React.useState(-1);
 	const [score, setScore] = React.useState<number>(0);
+
+    function newQuiz() {
+        const questionsArray = [];
+        for (let i = 0; i < 10; i++) {
+            questionsArray.push({'id': i, 'correct': false});
+        }
+        return questionsArray;
+    }
 
 	React.useEffect(() => {
 		console.log(score);
 	}, [score]);
 
-	function nextModule() {
-		setCurrentModule(currentModule + 1);
+	function nextQuestion() {
+		setCurrentQuestion(currentQuestion + 1);
 	}
 
 	return (
-		<div>
-			{currentModule === 0 && <QuizMultipleChoiceNames score={score} setScore={setScore} color="coral" colorOptions={["lightsalmon", "orangered", "coral", "pink"]} />}
-			<button onClick={nextModule}>Next</button>
+		<div className="quiz">
+            {currentQuestion < 0 && <QuizStart nextQuestion={nextQuestion} />}
+			{currentQuestion === 0 && <QuizMultipleChoiceNames
+                questions={questions} setQuestions={setQuestions}
+                currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                color="coral" colorOptions={["lightsalmon", "orangered", "coral", "pink"]}
+            />}
 		</div>
 	)
 }

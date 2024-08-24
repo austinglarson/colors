@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    Link,
-    Route,
-    Routes
-} from 'react-router-dom';
 import { Color } from './ColorNames'
-import './ColorNamesList.scss'
 
 function ColorName({ name, hex }: Color) {
     const [isDetailsOpen, setIsDetailsOpen] = React.useState(false);
@@ -67,7 +61,6 @@ export default function ColorNamesList({ colors }: {colors: Color[]}) {
     return (
         <div>
             <input type="text" value={colorSearch} onChange={searchColors} placeholder="Search by color name or keywords (red, light, etc...)" />
-            <button onClick={filterColorList}>Filter List</button>
             <div className="color-names-list">
                 {colorItems.map(color =>
                     <ColorName key={color.name.toLowerCase()} {...color} /> 
