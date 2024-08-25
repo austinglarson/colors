@@ -1,5 +1,5 @@
 import React from 'react'
-import { Color } from './ColorNames'
+import { Color } from './App'
 
 function ColorName({ name, hex }: Color) {
     const [isDetailsOpen, setIsDetailsOpen] = React.useState(false);
@@ -38,7 +38,7 @@ export default function ColorNamesList({ colors }: {colors: Color[]}) {
         const colorData = colors;
 
         setColorItems(
-            colorData.filter((value: Color, index: number, array: Color[]) =>
+            colorData.filter((value: Color) =>
                 value.families.includes(colorSearch.toLowerCase()) ||
                 value.name.includes(colorSearch.toUpperCase())
             )
@@ -47,15 +47,6 @@ export default function ColorNamesList({ colors }: {colors: Color[]}) {
 
     function searchColors(event: React.ChangeEvent<HTMLInputElement>) {
         setColorSearch(event.target.value);
-    }
-
-    function filterColorList() {
-        setColorItems(prevList =>
-            prevList.filter((value: Color, index: number, array: Color[]) =>
-                value.families.includes('red') ||
-                value.name.includes('red')
-            )
-        )
     }
 
     return (
