@@ -1,14 +1,8 @@
 import React from 'react'
 import ColorNamesList from './ColorNamesList';
 import colorData from './data/colors.json'
+import { Color } from './App'
 import './ColorNames.scss'
-
-export interface Color {
-    name: string,
-    hex: string,
-    rgb: string,
-    families: string[]
-}
 
 export default function ColorNames() {
     const [colors, setColors] = React.useState<Color[]>([]);
@@ -16,6 +10,18 @@ export default function ColorNames() {
     React.useEffect(() => {
         setColors(colorData);
     }, [])
+
+    /* const colorCounts = {};
+    for (let color of colorData) {
+        for (let family of color.families) {
+            if (typeof colorCounts[family] !== 'undefined') {
+                colorCounts[family] += 1;
+            } else {
+                colorCounts[family] = 1;
+            }
+        }
+    }
+    console.log(colorCounts); */
 
     return (
         <div id="colorNames">
