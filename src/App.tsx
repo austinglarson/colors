@@ -36,7 +36,6 @@ for (let colorFamily of colorFamilyArray) {
 export const colorFamilyData = colorFamilyArray;
 
 function App() {
-  console.log('Render App');
   return (
     <>
       <Router>

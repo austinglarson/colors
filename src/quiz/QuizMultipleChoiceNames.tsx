@@ -60,7 +60,7 @@ export default function QuizMultipleChoiceNames({question, setQuestions, current
 							checked={formData.color === colorOption.name}
 							onChange={updateFormData}
 						/>
-						<label htmlFor={id + '-' + colorOption}>{colorOption.name.toLowerCase()}</label>
+						<label htmlFor={id + '-' + colorOption.name}>{colorOption.name.toLowerCase()}</label>
 						<br />
 					</div>
 				)}
