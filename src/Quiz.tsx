@@ -3,6 +3,7 @@ import QuizStart from './quiz/QuizStart';
 import QuizMultipleChoiceColors from './quiz/QuizMultipleChoiceColors';
 import QuizMultipleChoiceNames from './quiz/QuizMultipleChoiceNames';
 import QuizColorNaming from './quiz/QuizColorNaming';
+import QuizEnd from './quiz/QuizEnd';
 import colorData from './data/colors.json'
 import { Color } from './App'
 import { colorFamilyData } from './App'
@@ -22,11 +23,11 @@ export interface Question {
 export default function Quiz() {
     const [questions, setQuestions] = React.useState(newQuiz());
 	const [currentQuestionId, setCurrentQuestionId] = React.useState(-1);
-    console.log('Render Quiz');
 
+    /* console.log('Render Quiz');
     React.useEffect(() => {
         console.log(questions);
-    }, [questions]);
+    }, [questions]); */
 
     function newQuiz() {
         const questionsArray: Question[] = [];
@@ -81,26 +82,28 @@ export default function Quiz() {
                 switch (questionData.type) {
                     case 'QuizMultipleChoiceColors':
                         return <QuizMultipleChoiceColors
-                            question={questions[i]} setQuestions={setQuestions}
-                            currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
+                            key={`${questions[i]}-multiple-choice-colors`} question={questions[i]}
+                            setQuestions={setQuestions} currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
                         />
                     case 'QuizMultipleChoiceNames':
                         return <QuizMultipleChoiceNames
-                            question={questions[i]} setQuestions={setQuestions}
-                            currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
+                            key={`${questions[i]}-multiple-choice-names`} question={questions[i]}
+                            setQuestions={setQuestions} currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
                         />
                     case 'QuizColorNaming':
                         return <QuizColorNaming
-                            question={questions[i]} setQuestions={setQuestions}
-                            currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
+                            key={`${questions[i]}-multiple-choice`} question={questions[i]}
+                            setQuestions={setQuestions} currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
                         />
                     default:
                         return <QuizMultipleChoiceColors
-                            question={questions[i]} setQuestions={setQuestions}
-                            currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
+                            key={`${questions[i]}-multiple-choice-colors`} question={questions[i]}
+                            setQuestions={setQuestions} currentQuestionId={currentQuestionId} nextQuestion={nextQuestion}
                         />
                 }
             })}
+            {currentQuestionId >= 10 && <QuizEnd questions={questions} newQuiz={newQuiz}
+            setQuestions={setQuestions} setCurrentQuestionId={setCurrentQuestionId} />}
 		</div>
 	)
 }

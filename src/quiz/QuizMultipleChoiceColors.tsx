@@ -60,13 +60,13 @@ export default function QuizMultipleChoiceNames({question, setQuestions, current
 							checked={formData.color === colorOption.hex}
 							onChange={updateFormData}
 						/>
-						<label className="color-swatch" htmlFor={id + '-' + colorOption} style={{backgroundColor: colorOption.hex}}></label>
+						<label className="color-swatch" htmlFor={id + '-' + colorOption.hex} style={{backgroundColor: colorOption.hex}}></label>
 						<br />
 					</div>
 				)}
 				{question.correct === null ?
 					<button className="btn" onClick={submitAnswer}>Submit</button> :
-					<button className="btn" onClick={nextQuestion}>Next</button>}
+					<button className="btn" onClick={nextQuestion}>{currentQuestionId === 10 ? 'See Results' : 'Next'}</button>}
 				{message !== '' && <p>{message}</p>}
 			</form>
 		</section>
