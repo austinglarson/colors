@@ -1,7 +1,7 @@
 import React from 'react'
 import { Color } from './App'
 
-function ColorName({ name, hex }: Color) {
+function ColorName({ name, hex, rgb }: Color) {
     const [isDetailsOpen, setIsDetailsOpen] = React.useState(false);
 
     function openColorDetails() {
@@ -17,9 +17,9 @@ function ColorName({ name, hex }: Color) {
 
             {isDetailsOpen && (
                 <div className="color-details">
-                    <p>Test</p>
-                    <p>{name}</p>
-                    <p>{hex}</p>
+                    <span>{hex}</span>
+                    <span>{rgb.toLowerCase()}</span>
+                    <input type="color" defaultValue={hex}></input>
                 </div>
             )}
         </div>

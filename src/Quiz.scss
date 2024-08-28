@@ -1,7 +1,29 @@
 .quiz {
-    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 145px); // header + footer
+    max-width: 500px;
     margin: 0 auto;
     padding: 1rem;
+
+    h1, h2 {
+        margin-bottom: 1.5rem;
+    }
+    form {
+        margin-top: 1.5rem;
+    }
+    .btn {
+        margin-top: 1.5rem;
+    }
+    input[type=text] {
+        display: block;
+    }
+}
+.quiz-option {
+    display: flex;
+}
+.quiz-option + .quiz-option {
+    margin-top: 0.5rem;
 }
 .color-swatch {
     width: 4rem;
