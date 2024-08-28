@@ -51,7 +51,7 @@ export default function QuizMultipleChoiceNames({question, setQuestions, current
 
 			<form>
 				{question.options && question.options.map(colorOption =>
-					<div key={colorOption.hex}>
+					<div key={colorOption.hex} className="quiz-option">
 						<input 
 							type="radio"
 							id={id + '-' + colorOption.hex}
@@ -61,7 +61,6 @@ export default function QuizMultipleChoiceNames({question, setQuestions, current
 							onChange={updateFormData}
 						/>
 						<label className="color-swatch" htmlFor={id + '-' + colorOption.hex} style={{backgroundColor: colorOption.hex}}></label>
-						<br />
 					</div>
 				)}
 				{question.correct === null ?
